@@ -32,14 +32,11 @@ def is_developer(employee):
 def is_not_developer(employee):
     return employee['job_title'] != 'developer'
 
-developers = list(filter(is_developer, employees))
-non_developers = list(filter(is_not_developer, employees))
-
 def get_salary(employee):
     return employee['salary']
 
-developer_salaries = list(map(get_salary, developers))
-non_developer_salaries = list(map(get_salary, non_developers))
+developer_salaries = [get_salary(e) for e in employees if is_developer(e)]
+non_developer_salaries = [get_salary(e) for e in employees if is_not_developer(e)]
 
 def get_sum(acc, x):
     return acc + x
